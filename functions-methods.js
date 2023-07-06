@@ -26,7 +26,7 @@ console.log(domainName);
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
 
-function typeOfEmail (email) {
+function typeOfEmail(email) {
     if (email.includes('@novi-education.nl')) {
         return 'Student'
     } else if (email.includes('@novi.nl')) {
@@ -48,7 +48,19 @@ console.log(typeOfDomain)
 // * Er géén . in voorkomt als allerlaatste karakter (dus hotmail.com is valide, net als outlook.nl, maar outlooknl. niet)
 // ---- Verwachte uitkomsten:
 // checkEmailValidity("n.eeken@novi.nl") geeft true - want @ en punt op de juiste plek
-// checkEmailValidity("tessmellink@novi.nl") geeft true - want @ en punt op de juiste plek
+// checkEmailValidity("n.eeken@novi.nl") geeft true - want @ en punt op de juiste plek
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+function checkEmailValidity(email) {
+    email = email.includes('@')
+        && email.charAt(email.length - 1) !== '.'
+        && !email.includes(',')
+    return email
+}
+
+
+const correctEmail = checkEmailValidity("tessmellink@novi,nl");
+
+console.log(correctEmail)
