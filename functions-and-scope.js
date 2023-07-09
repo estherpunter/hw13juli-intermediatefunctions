@@ -16,16 +16,15 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 
 // ---- Verwachte uitkomst: 6
 
-let cumLaudeGrade = 0;
-
-for (let i = 0; i < grades.length; i++) {
-    if (grades[i] >= 8) {
-        cumLaudeGrade++
-    }
-}
-
-console.log(cumLaudeGrade);
-
+// let cumLaudeGrade = 0;
+//
+// for (let i = 0; i < grades.length; i++) {
+//     if (grades[i] >= 8) {
+//         cumLaudeGrade++
+//     }
+// }
+//
+// console.log(cumLaudeGrade);
 
 
 /*  1b: Omschrijven tot een herbruikbare functie   */
@@ -38,18 +37,18 @@ console.log(cumLaudeGrade);
 // cumLaude([6, 4, 5]) geeft 0
 // cumLaude([8, 9, 4, 6, 10]) geeft 3
 
-let amountOfCumLaudeStudents = 0
-function cumLaude (array) {
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] >= 8) {
-            amountOfCumLaudeStudents++
-        }
-    }
-    return amountOfCumLaudeStudents
-}
-
-const amountOfSpecialDiplomas = cumLaude([8, 9, 4, 6, 10]);
-console.log(amountOfSpecialDiplomas)
+// let amountOfCumLaudeStudents = 0
+// function cumLaude (array) {
+//     for (let i = 0; i < array.length; i++) {
+//         if (array[i] >= 8) {
+//             amountOfCumLaudeStudents++
+//         }
+//     }
+//     return amountOfCumLaudeStudents
+// }
+//
+// const amountOfSpecialDiplomas = cumLaude([8, 9, 4, 6, 10]);
+// console.log(amountOfSpecialDiplomas)
 
 /* Opdracht  2: Gemiddeld cijfer */
 
@@ -63,6 +62,8 @@ console.log(amountOfSpecialDiplomas)
 
 // ---- Verwachte uitkomst: 6.642857142857143
 
+// ---- ZIE 2B ----
+
 
 /* 2b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd averageGrade, die een array van cijfers verwacht (zoals grades) en het gemiddelde cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 2a.
@@ -74,12 +75,23 @@ console.log(amountOfSpecialDiplomas)
 // averageGrade([6, 4, 5]) geeft xxxx
 // averageGrade([8, 9, 4, 6, 10]) geeft xxxx
 
+function calculateAverage(array) {
+    let total = 0;
+    let count = 0;
+    for (let i = 0; i < array.length; i++) {
+        total += array[i]
+        count++;
+    }
+    return Math.round(total / count)
+}
+
+const averageGrade = calculateAverage(grades);
+console.log(averageGrade);
+
 
 /* 2c: Afronden op twee decimalen */
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
-
-
 
 
 /* Bonusopdracht: hoogste cijfer */
@@ -93,6 +105,18 @@ console.log(amountOfSpecialDiplomas)
 
 // ---- Verwachte uitkomst: 9
 
+function calculateHighestGrade(array) {
+    let val = array[0];
+
+    for (let i = 1; i < array.length; i++) {
+        if (array[i] > val) val = array[i];
+    }
+
+    return val;
+}
+
+const highestGrade = calculateHighestGrade(grades);
+console.log(highestGrade)
 
 /* 3b: Omschrijven tot een herbruikbare functie */
 // Schrijf een functie genaamd highestGrade, die een array van cijfers verwacht (zoals grades) en het hoogste cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 3a.
